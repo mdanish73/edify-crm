@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import TopBar from "../components/TopBar";
+import SideNavBar from "@/components/SideNavBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +13,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="flex justify-start h-[100vh] overflow-y-scroll">
+          <SideNavBar />
+          <div className="w-full h-[100vh] overflow-y-scroll flex-1 main">
+            <TopBar/>
+            <div className="h-[100vh]">{children}</div>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
