@@ -5,7 +5,7 @@ import { IonChevronUp } from "./svg/IonChevronUp"
 import { FluentMdl2RadioBullet } from "./svg/FluentMdl2RadioBullet"
 import Link from "next/link"
 
-export default function SidebarItem({item, sideToggle}){
+export default function SidebarItem({item, sideToggle, setSideToggle}){
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -15,7 +15,10 @@ export default function SidebarItem({item, sideToggle}){
     if(item.children){
         return (
             <div className={open ? "sidebar-item open" : "sidebar-item"}>
-                <div onClick={() => setOpen(!open)} className="cursor-pointer sidebar-title flex justify-between hover:bg-blue-100 rounded-lg p-2 mt-1">
+                <div onClick={() => {
+                    setOpen(!open);
+                    setSideToggle(false);   
+                }} className="cursor-pointer sidebar-title flex justify-between hover:bg-blue-100 rounded-lg p-2 mt-1">
                     <span className="text-[#637381] text-[1rem] flex items-center gap-3">
                         { item.icon && <div className="inline">{item.icon}</div> }
                         <p className="text-[#637381] text-[1rem]" style={{display: !sideToggle ? 'block' : 'none'}}>{item.title}</p> 
