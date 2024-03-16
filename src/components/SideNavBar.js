@@ -53,10 +53,10 @@ export default function SideNavBar(){
     return (
         <div className="sidebar relative h-[100vh] p-5 pt-8 overflow-y-scroll border-r-2 z-[10000]" style={{width: sideToggle ? '5%' : '250px'}}>
           { !sideToggle ? <Image src='/img/logo.webp' width={150} height={180} className="mb-5" alt='ourlogo' /> : <Image src='/img/logo.jpg' width={42} height={42} className="mb-5" alt='ourlogo' /> }
-          <div onClick={() => handleToggle()} className=" text-sm border border-1 border-gray-400 w-max rounded-full absolute right-[-10px] top-10 cursor-pointer bg-[#F4F6F8] z-[10000]">
+          <div onClick={() => handleToggle()} className=" text-sm border border-1 border-gray-400 w-max rounded-full absolute right-[-10px] top-9 cursor-pointer bg-[#F4F6F8] z-[10000]">
             { !sideToggle ? <FluentChevronLeft24Filled /> : <FluentChevronRight24Filled /> }
           </div>
-          { navLink.map((item, i) => <SidebarItem key={i} item={item}  />) }
+          { navLink.map((item, i) => <SidebarItem key={i} item={item}  sideToggle={sideToggle} setSideToggle={setSideToggle} />) }
 
           { !sideToggle ?
             <Link href='/account' className="text-[#637381] hover:bg-blue-100 flex flex-col items-center rounded-lg p-3 my-7">
