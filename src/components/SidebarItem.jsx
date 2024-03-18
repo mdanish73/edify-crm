@@ -15,22 +15,26 @@ export default function SidebarItem({item, sideToggle, setSideToggle}){
     if(item.children){
         return (
             <div className={open ? "sidebar-item open" : "sidebar-item"}>
-                <div onClick={() => {
-                    setOpen(!open);
-                    setSideToggle(false);   
-                }} className="cursor-pointer sidebar-title flex justify-between hover:bg-blue-100 rounded-lg p-2 mt-1">
+                <div 
+                    onClick={() => {
+                        setOpen(!open);
+                        setSideToggle(false);   
+                    }} 
+                    className="cursor-pointer sidebar-title flex justify-between hover:bg-blue-100 rounded-lg p-2 mt-1"
+                >
                     <span className="text-[#637381] text-[1rem] flex items-center gap-3">
                         { item.icon && <div className="inline">{item.icon}</div> }
                         <p className="text-[#637381] text-[1rem]" style={{display: !sideToggle ? 'block' : 'none'}}>{item.title}</p> 
                     </span> 
-                    {open ? <IonChevronUp /> : <IonChevronDown />}
+                    {open ? <IonChevronUp /> : <IonChevronDown style={{display: !sideToggle ? 'block' : 'none'}} />}
                 </div>
                 <div className="sidebar-content">
                     {
                         item.children.map((child, index) => {
                             return (
-                                <div className="flex items-center my-[-5px] ml-7">
-                                     <SidebarItem key={index} item={child} />
+                                <div className="flex items-center my-0 ml-0 px-3 gap-2 hover:bg-blue-100 rounded-lg transition">
+                                    <FluentMdl2RadioBullet />
+                                    <SidebarItem key={index} item={child} />
                                 </div>
                             )
                         })

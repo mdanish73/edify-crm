@@ -41,23 +41,45 @@ export default function SideNavBar(){
         }
       ] 
     },
-    { title: 'Applications', href: '/applications', icon: <IonFileTrayFull /> },
-    { title: 'Visa', href: '/visa', icon: <SolarCompassSquareBoldDuotone /> },
-    { title: 'Accounts', href: '/accounts', icon: <IcTwotoneManageAccounts /> },
+    { title: 'Applications', href: '/applications', icon: <IonFileTrayFull />, children: [
+      {
+        title: 'abc', href: '/abc'
+      },
+      {
+        title: 'xyz', href: '/xyz'
+      }
+    ] },
+    { title: 'Visa', href: '/visa', icon: <SolarCompassSquareBoldDuotone />, children: [
+      {
+        title: 'abc', href: '/abc'
+      },
+      {
+        title: 'xyz', href: '/xyz'
+      }
+    ] },
+    { title: 'Accounts', href: '/accounts', icon: <IcTwotoneManageAccounts />, children: [
+      {
+        title: 'abc', href: '/abc'
+      },
+      {
+        title: 'xyz', href: '/xyz'
+      }
+    ] },
     { title: 'Reports', href: '/reports', icon: <UimGraphBar /> },
     { title: 'Defer / Environment', href: '/defer', icon: <SolarUserCrossBoldDuotone /> },
     { title: 'Coaching', href: '/coaching', icon: <PhChalkboardTeacherDuotone /> },
-    { title: `Masters`, href: '/masters', icon: <LetsIconsSettingLineDuotone /> }
+    { title: 'Masters', href: '/masters', icon: <LetsIconsSettingLineDuotone /> }
   ]
 
     return (
-        <div className="sidebar relative h-[100vh] p-5 pt-8 border-r-2" style={{width: sideToggle ? '5%' : '250px'}}>
+        <div className="sidebar relative h-[100vh] 2xl:px-4 pt-8 pb-16 border-r-2" style={{width: sideToggle ? '5%' : '250px'}}>
           { !sideToggle ? <Image src='/img/logo.webp' width={150} height={180} className="mb-5" alt='ourlogo' /> : <Image src='/img/logo.png' width={42} height={42} className="mb-5" alt='ourlogo' /> }
           <div onClick={() => handleToggle()} className=" text-sm border border-1 border-gray-400 w-max rounded-full absolute right-[-10px] top-9 cursor-pointer bg-[#F4F6F8] z-50">
             { !sideToggle ? <FluentChevronLeft24Filled /> : <FluentChevronRight24Filled /> }
           </div>
-
-          { navLink.map((item, i) => <SidebarItem key={i} item={item}  sideToggle={sideToggle} setSideToggle={setSideToggle} />) }
+          <div className="overflow-y-scroll h-full">
+            { navLink.map((item, i) => <SidebarItem key={i} item={item}  sideToggle={sideToggle} setSideToggle={setSideToggle} />) }
+          </div>
         </div>
     )
 }
