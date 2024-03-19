@@ -20,11 +20,11 @@ export default function SidebarItem({item, sideToggle, setSideToggle}){
                         setOpen(!open);
                         setSideToggle(false);   
                     }} 
-                    className="cursor-pointer sidebar-title flex justify-between hover:bg-blue-100 rounded-lg p-2 mt-1"
+                    className="cursor-pointer sidebar-title flex justify-between hover:bg-gray-100 rounded-lg p-2 mt-1"
                 >
-                    <span className="text-[#637381] text-[1rem] flex items-center gap-3">
+                    <span className="text-[#C0C7CD] text-[0.7rem] flex items-center gap-2">
                         { item.icon && <div className="inline">{item.icon}</div> }
-                        <p className="text-[#637381] text-[1rem]" style={{display: !sideToggle ? 'block' : 'none'}}>{item.title}</p> 
+                        <p className="text-[#637381] text-[0.9rem] font-medium" style={{display: !sideToggle ? 'block' : 'none'}}>{item.title}</p> 
                     </span> 
                     {open ? <IonChevronUp /> : <IonChevronDown style={{display: !sideToggle ? 'block' : 'none'}} />}
                 </div>
@@ -44,9 +44,9 @@ export default function SidebarItem({item, sideToggle, setSideToggle}){
         )
     }else{
         return (
-            <Link href={item.href || "#"} className="sidebar-item plain text-black flex items-center gap-3 justify-start hover:no-underline hover:bg-blue-100 rounded-lg p-2 my-2">
+            <Link href={item.href || "#"} className="sidebar-item plain text-black flex items-center gap-2 justify-start hover:no-underline hover:bg-blue-100 rounded-lg p-2 my-2">
                 { item.icon && <div>{item.icon}</div> }
-                <div className="text-[#637381]" style={{display: !sideToggle ? 'block' : 'none'}}>{item.title}</div>
+                <div className="text-[#637381] text-[0.9rem] font-medium" style={{display: !sideToggle ? 'block' : 'none'}}>{item.title}</div>
             </Link>
         )
     }

@@ -1,6 +1,8 @@
 'use client'
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import { Chart, ArcElement } from 'chart.js';
+Chart.register(ArcElement);
 
 const MyDoughnutChart = () => {
     const data = {
@@ -23,7 +25,9 @@ const MyDoughnutChart = () => {
       
     const options = {
       responsive: true,
-      maintainAspectRatio: false
+      cutout: '80%',
+      radius: '80%',
+      maintainAspectRatio: true
     };
 
     return (

@@ -34,7 +34,9 @@ export default function SideNavBar(){
     { title: 'Enquiry', href: '/enquiry', icon: <SolarQuestionSquareBoldDuotone /> },
     { title: 'Students', href: '', icon: <PhStudentDuotone />, children: [
         {
-          title: 'abc', href: '/abc'
+          title: 'abc', href: '/abc',children:[
+            {title:"Abc",href:"/abc"}
+          ]
         },
         {
           title: 'xyz', href: '/xyz'
@@ -73,7 +75,7 @@ export default function SideNavBar(){
 
     return (
         <div className="sidebar relative h-[100vh] 2xl:px-4 pt-8 pb-16 border-r-2" style={{width: sideToggle ? '5%' : '250px'}}>
-          { !sideToggle ? <Image src='/img/logo.webp' width={150} height={180} className="mb-5" alt='ourlogo' /> : <Image src='/img/logo.png' width={42} height={42} className="mb-5" alt='ourlogo' /> }
+          { !sideToggle ? <Image src='/img/logo.webp' width={150} height={180} className="mb-5" alt='ourlogo' /> : <Image src='/img/logo.png' width={38} height={37} className="mb-5" alt='ourlogo' /> }
           <div onClick={() => handleToggle()} className=" text-sm border border-1 border-gray-400 w-max rounded-full absolute right-[-10px] top-9 cursor-pointer bg-[#F4F6F8] z-50">
             { !sideToggle ? <FluentChevronLeft24Filled /> : <FluentChevronRight24Filled /> }
           </div>
