@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const TopBar = () => {
   return (
-    <div className='sticky top-0 z-10 bg-[#F4F6F8] p-5 text-blue-600 backdrop-grayscale w-full flex justify-end gap-5 items-center'>
+    <div className='sticky top-0 z-10 bg-[#F4F6F8] p-5 text-blue-600 backdrop-grayscale w-full flex justify-end gap-5 items-center bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50'>
       <button>
         <SolarBellBoldDuotone className='relative top-[10px] left-0' />
         <small className='relative top-[-25px] right-[-12px] text-[11px] text-white bg-orange-600 w-4 h-4 rounded-full p-2 flex items-center justify-center'>1</small>

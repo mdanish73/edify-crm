@@ -13,10 +13,11 @@
   flex-shrink: 0;
   background-color: #F4F6F8;
   height: 100%;
+  transition: all 0.5s ease-in-out;
 }
 .sidebar-title .toggle-btn{
   cursor: pointer;
-  transition: transform .3s;
+  transition: all .3s;
 }
 .sidebar-content{
   padding-top: .25em;
@@ -26,5 +27,5 @@
   width: 100%;
 }
 .sidebar-item.open > .sidebar-content{
-  height: auto;
+  height: 100% !important;
 }
