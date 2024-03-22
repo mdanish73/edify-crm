@@ -21,8 +21,12 @@ export default function SideNavBar() {
     const [headerToggles, setHeaderToggles] = useState({});
     
     useEffect(() => {
+      const initialHeaderToggles = {};
+      headers.forEach(header => {
+        initialHeaderToggles[header.label] = true;
+      });
       setSideToggle(false);
-      setHeaderToggles({});
+      setHeaderToggles(initialHeaderToggles);
     }, []);
 
     const navHandle = (label) => {
