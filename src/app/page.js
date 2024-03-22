@@ -5,8 +5,8 @@ import LineChart from '@/components/charts/LineChart'
 
 const page = () => {
   return (
-    <div className='bg-[#F4F6F8] grid grid-cols-3 grid-rows-3 w-full h-max p-6 gap-5'>
-      <div className='p-3 rounded-lg border border-1 border-gray-300 bg-white'>
+    <div className='bg-[#F4F6F8] grid grid-cols-3 grid-rows-3 w-full p-6 gap-5'>
+      <div className='p-3 rounded-lg border border-1 border-gray-300 bg-white h-72'>
         <h6 className='text-sm font-semibold'>Total Active Users</h6>
         <div>
           <div className='font-bold text-3xl'>
@@ -17,7 +17,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div className='p-3 rounded-lg border border-1 border-gray-300 bg-white'>
+      <div className='p-3 rounded-lg border border-1 border-gray-300 bg-white h-72'>
         <h6 className='text-sm font-semibold'>Total Applications</h6>
         <div>
           <div className='font-bold text-3xl'>
@@ -28,7 +28,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div className='p-3 rounded-lg border border-1 border-gray-300 bg-white'>
+      <div className='p-3 rounded-lg border border-1 border-gray-300 bg-white h-72'>
         <h6 className='text-sm font-semibold'>Total Visas Granted</h6>
         <div>
           <div className='font-bold text-3xl'>

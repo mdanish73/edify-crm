@@ -32,7 +32,7 @@ export const data = {
 
 const MiniBarChart = () => {
     return (
-        <div><Bar data={data} options={options} /></div>
+        <div><Bar data={data} options={options} className='mb-0' /></div>
     )
 }
 
