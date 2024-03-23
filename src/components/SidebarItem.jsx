@@ -4,8 +4,10 @@ import { IonChevronUp } from "./svg/IonChevronUp"
 import { FluentMdl2RadioBullet } from "./svg/FluentMdl2RadioBullet"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import Ripple from 'material-ripple-effects'
 
 export default function SidebarItem({item, sideToggle, setSideToggle}){     
+    const ripple = new Ripple();
     const [open, setOpen] = useState(false);
     const isActive = item.href && usePathname() === item.href;
     useEffect(() => {
@@ -19,6 +21,7 @@ export default function SidebarItem({item, sideToggle, setSideToggle}){
                         setOpen(!open);
                         setSideToggle(false);   
                     }} 
+                    onMouseUp={(event) => ripple.create(event, 'dark')}
                     className="cursor-pointer sidebar-title flex justify-between hover:bg-gray-200 rounded-lg p-2 mt-1 w-full"
                 >
                     <span className="text-[#C0C7CD] text-[0.7rem] flex items-center gap-2 w-full">
@@ -42,7 +45,7 @@ export default function SidebarItem({item, sideToggle, setSideToggle}){
         )
     }else{
         return (
-            <Link href={item.href || "#"} className="sidebar-item plain text-black flex items-center gap-2 justify-start hover:no-underline hover:bg-gray-200 rounded-lg p-2 my-2" style={{ backgroundColor: isActive ? '#bfdcfe' : '' }}>
+            <Link href={item.href || "#"} className="sidebar-item plain text-black flex items-center gap-2 justify-start hover:no-underline hover:bg-gray-200 rounded-lg p-2 my-2" style={{ backgroundColor: isActive ? '#bfdcfe' : '' }} onMouseUp={(event) => ripple.create(event, 'dark')}>
                 { item.icon && <div>{item.icon}</div> }
                 <div className="text-[#637381] text-[0.9rem] font-medium" style={{display: !sideToggle ? 'block' : 'none'}}>{item.title}</div>
             </Link>

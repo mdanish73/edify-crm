@@ -29,7 +29,6 @@
 .sidebar-item.open > .sidebar-content{
   height: 100% !important;
 }
-
 .menu {
   transition: height 1s ease;
 }
