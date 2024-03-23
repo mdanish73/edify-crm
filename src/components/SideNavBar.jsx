@@ -106,9 +106,9 @@ export default function SideNavBar() {
         {
           headers.map((v, i) => {
             return (
-              <div key={i} className="overflow-y-scroll">
+              <div key={i}>
                 <span className="uppercase text-sm font-bold text-gray-600 cursor-pointer my-4" style={{ display: sideToggle ? 'none' : 'block' }} onClick={() => navHandle(v.label)}>{v.label}</span>
-                <div className="transition-all" style={{ height: headerToggles[v.label] ? '' : 0 }}>
+                <div className='menu overflow-scroll' style={{ height: headerToggles[v.label] ? '' : 0 }}>
                   { Array.isArray(v.child) && v.child.map((item, i) => <SidebarItem key={i} item={item} navLink={v.child} sideToggle={sideToggle} setSideToggle={setSideToggle} />) }
                 </div>
               </div>

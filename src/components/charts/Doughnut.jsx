@@ -35,7 +35,7 @@ const MyDoughnutChart = () => {
                 const chartData = {
                     labels: uniqueDepartments,
                     datasets: [{
-                        label: 'Department',
+                        label: 'No. of Employees',
                         data: uniqueDepartments.map((department) => departmentsCount[department]),
                         backgroundColor: [
                             'rgb(255, 99, 132)',
@@ -65,6 +65,7 @@ const MyDoughnutChart = () => {
 
     return (
         <div>
+            <div className='text-sm font-semibold mb-2'>Employees Data</div>
             {(res !== null) ? <Doughnut data={res} options={options} /> : <div>Employees data can not be found...</div>}
         </div>
     );
