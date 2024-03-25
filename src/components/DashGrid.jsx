@@ -16,7 +16,7 @@ const DashGrid = () => {
     }, [Applications.current, Granted.current]);
   return (
     <div className='bg-[#F4F6F8] grid grid-cols-3 grid-rows-[repeat(8, minmax(1fr))] w-full p-6 gap-5'>
-      <div className='p-7 col-span-2 row-span-7 rounded-lg bg-gradient-to-br from-[#E2EEFB] to-[#D4E2F6] h-full flex items-center justify-between w-full'>
+      <div className='p-7 col-span-2 row-span-7 rounded-lg bg-gradient-to-br from-[#E2EEFB] to-[#D4E2F6] h-full flex items-center justify-between w-full shadow-lg'>
         <div>
           <h6 className='font-bold text-3xl text-blue-900'>Danish</h6>
           <p className='text-blue-950 text-sm mt-4 mb-12'>If you're here to check out the reports. Check them out...</p>
@@ -27,11 +27,11 @@ const DashGrid = () => {
         </div>
       </div>
 
-      <div className='p-3 row-span-7 rounded-lg bg-white h-full'>
+      <div className='p-3 row-span-7 rounded-lg bg-white h-full shadow-lg'>
         
       </div>
 
-      <div className='p-3 rounded-lg bg-white h-full'>
+      <div className='p-3 rounded-lg bg-white h-full shadow-lg'>
         <h6 className='text-sm font-semibold'>Total Applications</h6>
         <div>
           <div className='font-bold text-3xl' ref={Applications}>
@@ -40,7 +40,7 @@ const DashGrid = () => {
         </div>
       </div>
 
-      <div className='p-3 rounded-lg bg-white h-full'>
+      <div className='p-3 rounded-lg bg-white h-full shadow-lg'>
       <h6 className='text-sm font-semibold'>Total Visas Granted</h6>
         <div>
           <div className='font-bold text-3xl' ref={Granted}>
@@ -49,20 +49,20 @@ const DashGrid = () => {
         </div>
       </div>
       
-      <div className='p-3 rounded-lg bg-white h-full'>
-        <h6 className='text-sm font-semibold'>Total Visas Granted</h6>
+      <div className='p-3 rounded-lg bg-white h-full shadow-lg'>
+        <h6 className='text-sm font-semibold'>Total Visas Deferred</h6>
         <div>
             <div className='font-bold text-3xl'>
-                { rejected }
+                { ( rejected > 999) ? rejected.toLocaleString(2) : rejected }
             </div>
         </div>
       </div>
       
-      <div className='p-3 rounded-lg bg-white'>
+      <div className='p-3 rounded-lg bg-white shadow-lg'>
         <MyDoughnutChart />
       </div>
       
-      <div className='p-3 rounded-lg col-span-2 bg-white'>
+      <div className='p-3 rounded-lg col-span-2 bg-white shadow-lg'>
         <LineChart />
       </div>
     </div>
