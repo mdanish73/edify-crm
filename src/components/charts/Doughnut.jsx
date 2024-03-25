@@ -1,5 +1,5 @@
 'use client'
-import { React, useState, useEffect } from 'react';
+import { React, useState, useLayoutEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import { Chart, ArcElement, registerables } from 'chart.js';
 import axios from 'axios';
@@ -8,7 +8,7 @@ Chart.register(ArcElement, ...registerables);
 const MyDoughnutChart = () => {
     const [res, setRes] = useState(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const axiosConfig = {
             headers: {
                 Accept: "application/json"

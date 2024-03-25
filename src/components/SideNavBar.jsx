@@ -11,7 +11,7 @@ import { UimGraphBar } from "@/components/svg/MdiGraphBoxPlusOutline"
 import { SolarUserCrossBoldDuotone } from "@/components/svg/LaUserTimes"
 import { PhChalkboardTeacherDuotone } from "@/components/svg/LaChalkboardTeacher"
 import { LetsIconsSettingLineDuotone } from "@/components/svg/LucideSettings"
-import { useState, useEffect } from "react"
+import { useState, useLayoutEffect } from "react"
 import { FluentChevronLeft24Filled } from "@/components/svg/FluentChevronLeft24Filled"
 import { FluentChevronRight24Filled } from "@/components/svg/FluentChevronRight24Filled"
 import Image from "next/image"
@@ -20,14 +20,24 @@ export default function SideNavBar() {
     const [sideToggle, setSideToggle] = useState(true);
     const [headerToggles, setHeaderToggles] = useState({});
     
-    useEffect(() => {
-      const initialHeaderToggles = {};
+    const initialHeaderToggles = {};
+    useLayoutEffect(() => {
       headers.forEach(header => {
         initialHeaderToggles[header.label] = true;
       });
       setSideToggle(false);
       setHeaderToggles(initialHeaderToggles);
     }, []);
+
+    useLayoutEffect(() => {
+      setHeaderToggles(prevState => {
+        const updatedHeaderToggles = {};
+        Object.keys(prevState).forEach(label => {
+          updatedHeaderToggles[label] = sideToggle ? prevState[label] : true;
+        });
+        return updatedHeaderToggles;
+      });
+    }, [!sideToggle]);
 
     const navHandle = (label) => {
       setHeaderToggles(prevState => ({

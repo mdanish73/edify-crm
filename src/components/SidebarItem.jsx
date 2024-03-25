@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react"
+import { useState, useLayoutEffect } from "react"
 import { IonChevronUp } from "./svg/IonChevronUp"
 import { FluentMdl2RadioBullet } from "./svg/FluentMdl2RadioBullet"
 import Link from "next/link"
@@ -10,7 +10,7 @@ export default function SidebarItem({item, sideToggle, setSideToggle}){
     const ripple = new Ripple();
     const [open, setOpen] = useState(false);
     const isActive = item.href && usePathname() === item.href;
-    useEffect(() => {
+    useLayoutEffect(() => {
         setOpen(false);
     }, [sideToggle]);
     if(item.children){
