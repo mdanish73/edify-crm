@@ -15,28 +15,28 @@ const MyDoughnutChart = () => {
             }
         }
 
-        axios.get('https://admin.edifycit.com/api/employees', axiosConfig).then((response) => {
+        axios.get('https://admin.edifycit.com/api/employees?limit=73', axiosConfig).then((response) => {
             const data = response.data.message.data;
 
             if (data.length > 0) {
-                const departmentsCount = {};
+                const statusCount = {};
 
                 data.forEach((employee) => {
-                    const department = employee.department;
-                    if (departmentsCount.hasOwnProperty(department)) {
-                        departmentsCount[department]++;
+                    const status = employee.status;
+                    if (statusCount.hasOwnProperty(status)) {
+                        statusCount[status]++;
                     } else {
-                        departmentsCount[department] = 1;
+                        statusCount[status] = 1;
                     }
                 });
 
-                const uniqueDepartments = Object.keys(departmentsCount);
+                const uniqueStatus = Object.keys(statusCount);
 
                 const chartData = {
-                    labels: uniqueDepartments,
+                    labels: uniqueStatus,
                     datasets: [{
                         label: 'No. of Employees',
-                        data: uniqueDepartments.map((department) => departmentsCount[department]),
+                        data: uniqueStatus.map((status) => statusCount[status]),
                         backgroundColor: [
                             'rgb(255, 99, 132)',
                             'rgb(54, 162, 235)',
@@ -58,8 +58,8 @@ const MyDoughnutChart = () => {
 
     const options = {
         responsive: true,
-        cutout: '80%',
-        radius: '80%',
+        cutout: '85%',
+        radius: '70%',
         maintainAspectRatio: true
     };
 

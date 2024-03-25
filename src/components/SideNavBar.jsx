@@ -113,18 +113,20 @@ export default function SideNavBar() {
         <div onClick={() => handleToggle()} className=" text-sm border border-1 border-gray-300 w-max rounded-full absolute right-[-10px] top-9 cursor-pointer bg-[#F4F6F8] z-50">
           { !sideToggle ? <FluentChevronLeft24Filled /> : <FluentChevronRight24Filled /> }
         </div>
-        {
-          headers.map((v, i) => {
-            return (
-              <div key={i}>
-                <span className="uppercase text-sm font-bold text-gray-600 cursor-pointer my-4" style={{ display: sideToggle ? 'none' : 'block' }} onClick={() => navHandle(v.label)}>{v.label}</span>
-                <div className='menu overflow-scroll' style={{ height: headerToggles[v.label] ? '' : 0 }}>
-                  { Array.isArray(v.child) && v.child.map((item, i) => <SidebarItem key={i} item={item} navLink={v.child} sideToggle={sideToggle} setSideToggle={setSideToggle} />) }
+        <div className="h-full overflow-y-scroll">
+          {
+            headers.map((v, i) => {
+              return (
+                <div key={i}>
+                  <span className="uppercase text-sm font-bold text-gray-600 cursor-pointer my-4" style={{ display: sideToggle ? 'none' : 'block' }} onClick={() => navHandle(v.label)}>{v.label}</span>
+                  <div className='menu overflow-hidden' style={{ height: headerToggles[v.label] ? '' : 0 }}>
+                    { Array.isArray(v.child) && v.child.map((item, i) => <SidebarItem key={i} item={item} navLink={v.child} sideToggle={sideToggle} setSideToggle={setSideToggle} />) }
+                  </div>
                 </div>
-              </div>
-            )
-          })
-        }
+              )
+            })
+          }
+        </div>
       </div>
     )
 }
