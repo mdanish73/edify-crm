@@ -7,6 +7,7 @@ Chart.register(ArcElement, ...registerables);
 
 const MyDoughnutChart = () => {
     const [res, setRes] = useState(null);
+    const [totalEmp, setTotalEmp] = useState(null);
 
     useLayoutEffect(() => {
         const axiosConfig = {
@@ -17,7 +18,8 @@ const MyDoughnutChart = () => {
 
         axios.get('https://admin.edifycit.com/api/employees?limit=73', axiosConfig).then((response) => {
             const data = response.data.message.data;
-
+            const numOfEmp = response.data.message.count;
+            setTotalEmp(numOfEmp);
             if (data.length > 0) {
                 const statusCount = {};
 
@@ -58,15 +60,26 @@ const MyDoughnutChart = () => {
 
     const options = {
         responsive: true,
-        cutout: '85%',
-        radius: '70%',
+        cutout: '90%',
+        radius: '80%',
         maintainAspectRatio: true
     };
 
     return (
-        <div>
-            <div className='text-sm font-semibold mb-2'>Employees Data</div>
-            {(res !== null) ? <Doughnut data={res} options={options} /> : <div>Employees data can not be found...</div>}
+        <div className='relative'>
+            {
+                (res !== null) ? 
+                <div>
+                    <div className='text-sm font-semibold mb-2'>Employees Data</div>
+                    <Doughnut data={res} options={options} /> 
+                    <div className='absolute top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] mt-8'>
+                        <span className='block text-sm font-semibold text-gray-500 text-center'>Total</span>
+                        <span className='text-[3vw] font-bold'>{totalEmp.toLocaleString()}</span>
+                    </div>
+                </div>
+                : 
+                <div>Employees data can not be found...</div>
+            }
         </div>
     );
 }
