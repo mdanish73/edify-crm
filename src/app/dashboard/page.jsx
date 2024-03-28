@@ -1,9 +1,7 @@
-import { React } from 'react'
 import DashGrid from '@/components/DashGrid'
-import Link from 'next/link'
+import React from 'react'
 
 const page = () => {
-
   return (
     <div><DashGrid /></div>
   )

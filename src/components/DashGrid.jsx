@@ -33,7 +33,7 @@ const DashGrid = () => {
   }, [])
 
   return (
-    <div className='bg-[#F4F6F8] grid grid-cols-3 grid-rows-[repeat(8, minmax(1fr))] w-full p-6 gap-5'>
+    <div className='bg-[#F4F6F8] grid grid-cols-3 grid-rows-[repeat(13, minmax(1fr))] w-full p-6 gap-5'>
       <div className='p-7 col-span-2 row-span-7 rounded-lg bg-gradient-to-br from-[#E2EEFB] to-[#D4E2F6] h-full flex items-center justify-between w-full'>
         <div>
           <h6 className='font-bold text-3xl text-blue-900'>Welcome Back,</h6>
@@ -85,7 +85,7 @@ const DashGrid = () => {
         <LineChart />
       </div>
       
-      <div className='p-3 rounded-lg bg-white'>
+      <div className='rounded-lg bg-white h-80'>
         <Slider />
       </div>
     </div>
