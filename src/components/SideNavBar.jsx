@@ -119,7 +119,7 @@ export default function SideNavBar() {
               return (
                 <div key={i}>
                   <span className="uppercase text-sm font-bold text-gray-600 cursor-pointer my-4" style={{ display: sideToggle ? 'none' : 'block' }} onClick={() => navHandle(v.label)}>{v.label}</span>
-                  <div className='menu overflow-hidden' style={{ height: headerToggles[v.label] ? '' : 0 }}>
+                  <div className='overflow-hidden transition-max-height duration-300 ease-in-out' style={{ maxHeight: headerToggles[v.label] ? '1500px' : 0 }}>
                     { Array.isArray(v.child) && v.child.map((item, i) => <SidebarItem key={i} item={item} navLink={v.child} sideToggle={sideToggle} setSideToggle={setSideToggle} />) }
                   </div>
                 </div>

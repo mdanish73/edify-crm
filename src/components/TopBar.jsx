@@ -29,7 +29,7 @@ const TopBar = () => {
       <div className='overflow-hidden w-10 h-10 rounded-full border-2 border-gray-300 cursor-pointer relative hover:scale-110 transition-all'>
         <Image onClick={toggleClick} src='/img/logo.jpg' width={40} height={40} alt='userImg' className='object-cover' />
       </div>
-      <div className='bg-white bg-clip-padding backdrop-filter backdrop-blur-3xl menu bg-opacity-90 border border-gray-200 absolute z-40 top-20 py-4 rounded-xl transition-all overflow-hidden' style={{ width: toggle ? '' : 0, height: toggle ? '' : 0 }}>
+      <div className='bg-white bg-clip-padding backdrop-filter backdrop-blur-3xl bg-opacity-90 border border-gray-200 absolute z-40 top-20 py-4 rounded-xl transition-max-height duration-300 ease-in-out overflow-hidden' style={{ scale: toggle ? 1.1 : 0, pointerEvents: toggle ? 'all' : 'none' }}>
         <div className='font-medium text-md px-3 text-[#334454]'>Danish</div>
         <span className='px-3 text-sm my-2 text-gray-400 mb-2'>danish@demoAccount.com</span>
         <hr className='w-full mt-1'/>
