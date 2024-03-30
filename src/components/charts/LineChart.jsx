@@ -25,8 +25,6 @@ const LineChart = () => {
         options: {
           animations: {
             tension: {
-              duration: 370,
-              easing: 'linear',
               from: 0,
               to: 0.5
             }

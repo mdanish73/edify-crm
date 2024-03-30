@@ -6,31 +6,23 @@ import DashPic from '@/components/svg/DashPic'
 import Link from 'next/link'
 import EmployeeOfMonth from './EmployeeOfMonth'
 import Slider from './Slider'
+import ApplicationsGraph from './charts/ApplicationsGraph'
+import GrantedGraph from './charts/GrantedGraph'
+import DefferedGraph from './charts/DefferedGraph'
 
 const DashGrid = () => {
-  let [courses, setCourses] = useState(0);
-  let [stories, setStories] = useState(0);
-  let [alumni, setAlumni] = useState(0);
+  let [applications, setApplications] = useState(0);
+  let [granted, setGranted] = useState(0);
+  let [deffered, setDeffered] = useState(0);
+  
   useLayoutEffect(() => {
-    const incrementCourses = () => {
-      setTimeout(() => {
-        if (courses <= 30) {
-          setCourses(courses++);
-          incrementCourses();
-        }
-        if (stories <= 600) {
-          setStories(stories++);
-          incrementCourses();
-        }
-        if (alumni <= 3500) {
-          setAlumni(alumni++);
-          incrementCourses();
-        }
-      }, 100);
-    };
-
-    incrementCourses();
-  }, [])
+    setApplications(10000);
+    setGranted(9900);
+  }, []);
+  
+  useLayoutEffect(() => {
+    setDeffered(applications - granted);
+  }, [applications, granted]);
 
   return (
     <div className='bg-[#F4F6F8] grid grid-cols-3 grid-rows-[repeat(13, minmax(1fr))] w-full p-6 gap-5'>
@@ -51,29 +43,44 @@ const DashGrid = () => {
       </div>
 
       <div className='p-3 rounded-lg bg-white h-full'>
-        <h6 className='text-sm font-semibold'>IT Courses</h6>
-        <div>
-          <div className='font-bold text-3xl'>
-            {courses.toLocaleString()}+
+        <div className='flex justify-between'>
+          <div>
+            <h6 className='text-sm font-semibold'>Total Visa Applications</h6>
+            <div className='font-bold text-3xl'>
+              {applications.toLocaleString()}
+            </div>
+          </div>
+          <div>
+            <ApplicationsGraph />
           </div>
         </div>
       </div>
 
       <div className='p-3 rounded-lg bg-white h-full'>
-      <h6 className='text-sm font-semibold'>Success Stories</h6>
-        <div>
-          <div className='font-bold text-3xl'>
-            {stories}+
+        <div className='flex justify-between'>
+          <div>
+            <h6 className='text-sm font-semibold'>Total Granted Visas</h6>
+            <div className='font-bold text-3xl'>
+              {granted.toLocaleString()}
+            </div>
+          </div>
+          <div>
+            <GrantedGraph />
           </div>
         </div>
       </div>
       
       <div className='p-3 rounded-lg bg-white h-full'>
-        <h6 className='text-sm font-semibold'>Alumni</h6>
-        <div>
+      <div className='flex justify-between'>
+          <div>
+            <h6 className='text-sm font-semibold'>Total Deffered Visas</h6>
             <div className='font-bold text-3xl'>
-            {alumni}+
+              {deffered.toLocaleString()}
             </div>
+          </div>
+          <div>
+            <DefferedGraph />
+          </div>
         </div>
       </div>
       
