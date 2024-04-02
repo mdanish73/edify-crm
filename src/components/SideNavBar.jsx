@@ -108,8 +108,10 @@ export default function SideNavBar() {
     ]
 
     return (
-      <div className="sidebar relative h-[100vh] 2xl:px-4 pt-8 pb-16 border-r-2" style={{width: sideToggle ? '5%' : '250px'}}>
-        { !sideToggle ? <Image src='/img/logo.webp' width={150} height={0} className="mb-5" alt='ourlogo' /> : <Image src='/img/logo.png' width={38} height={0} className="mb-5" alt='ourlogo' /> }
+      <div className={`sidebar relative ${ sideToggle ? 'w-[0%] sm:w-[0%] md:w-[0%] lg:w-[6%]' : 'w-[250px]' } h-[100vh] px-1 sm:px-1 md:px-2 lg:px-2 xl:px-4 pt-8 pb-16 border-r-2`}>
+        <div className={ `${ sideToggle ? 'flex justify-center' : '' }` }>
+          { !sideToggle ? <Image src='/img/logo.webp' width={150} height={0} className="mb-5" alt='ourlogo' /> : <Image src='/img/logo.png' width={38} height={0} className="mb-5" alt='ourlogo' /> }
+        </div>
         <div onClick={() => handleToggle()} className=" text-sm border border-1 border-gray-300 w-max rounded-full absolute right-[-10px] top-9 cursor-pointer bg-[#F4F6F8] z-50">
           { !sideToggle ? <FluentChevronLeft24Filled /> : <FluentChevronRight24Filled /> }
         </div>

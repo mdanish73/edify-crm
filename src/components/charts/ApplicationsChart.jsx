@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
 import Chart from 'react-apexcharts';
 
-export default class GrantedGraph extends React.Component {
+export default class ApplicationsChart extends React.Component {
     constructor(props) {
       super(props);
 
@@ -10,7 +10,7 @@ export default class GrantedGraph extends React.Component {
       
         series: [{
           name: 'Net Profit',
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+          data: [30, 70, 37, 73, 30, 70, 21, 90, 25]
         }],
         options: {
           chart: {
@@ -27,12 +27,12 @@ export default class GrantedGraph extends React.Component {
               shade: 'dark',
               type: "horizontal",
               shadeIntensity: 0.5,
-              gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+              gradientToColors: ['#0000ffAA','#00ff0005','#00ff0007','#00ff0009'], 
               inverseColors: true,
-              opacityFrom: 1,
-              opacityTo: 1,
+              opacityFrom: 0.3,
+              opacityTo: 0.9,
               stops: [0, 50, 100],
-              colorStops: []
+              colorStops: [0, 30, 50, 70, 90]
             }
           },
           plotOptions: {

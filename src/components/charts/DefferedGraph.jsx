@@ -1,50 +1,105 @@
-import React from 'react'
-import { Bar } from 'react-chartjs-2';
+import React, { Component } from "react";
+import ReactApexChart from "react-apexcharts";
+import Chart from 'react-apexcharts';
 
-const DefferedGraph = () => {
-    const data = {
-        labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M'],
-        datasets: [
-          {
-            labels: 'data',
-            data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-            borderColor: '#36A2EB',
-            backgroundColor: '#9BD0F5',
-            line: {
-                pointRadius: 5
+export default class DefferedGraph extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+      
+        series: [{
+          name: 'Net Profit',
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+        }],
+        options: {
+          chart: {
+            type: 'bar',
+            height: 100,
+            width: 120,
+            toolbar: {
+                show: false
             }
-          }
-        ]
-    };
-
-    const options = {
-        layout: {
-            padding: 10,
-            height: 10
-        },
-        scales: {
-            x: {
-                display: false
+          },
+          fill: {
+            type: 'gradient',
+            gradient: {
+              shade: 'dark',
+              type: "horizontal",
+              shadeIntensity: 0.5,
+              gradientToColors: undefined, // optional, if not defined - uses the shades of same color in series
+              inverseColors: true,
+              opacityFrom: 1,
+              opacityTo: 1,
+              stops: [0, 50, 100],
+              colorStops: []
+            }
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: '100%',
+              borderRadius: 2
             },
-            y: {
-                display: false,
-                ticks: {
-                    display: false
-                }
+          },
+          dataLabels: {
+            enabled: false,
+            show: false
+          },
+          stroke: {
+            width: 1,
+            colors: ['transparent']
+          },
+          xaxis: {
+            show: false,
+            labels: {
+              show: false
+            },
+            axisBorder: {
+              show: false
+            },
+            axisTicks: {
+              show: false
+            },
+            crosshairs: {
+                show: false
+            },
+            tooltip: {
+                show: false
             }
+          },
+          yaxis: {
+            show: false,
+            labels: {
+              show: false,
+            },
+            axisBorder: {
+              show: false,
+            },
+            axisTicks: {
+              show: false,
+            },
+            crosshairs: {
+              show: false,
+            },
+            tooltip: {
+              enabled: false,
+            },
+          },
+          fill: {
+            opacity: 1
+          }
         },
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    };
-  
-    return (
-    <div className='w-32'>
-        <Bar data={data} options={options} />
-    </div>
-  )
-}
+      };
+    }
 
-export default DefferedGraph
+    render() {
+      return (
+        <div>
+          <div id="chart">
+            <ReactApexChart options={this.state.options} series={this.state.series} type="bar" height={90} width={70} />
+          </div>
+        </div>
+      );
+    }
+  }
