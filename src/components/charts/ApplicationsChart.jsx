@@ -9,7 +9,7 @@ export default class ApplicationsChart extends React.Component {
       this.state = {
       
         series: [{
-          name: 'Net Profit',
+          name: 'Total Applications',
           data: [30, 70, 37, 73, 30, 70, 21, 90, 25]
         }],
         options: {

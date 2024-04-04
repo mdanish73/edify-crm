@@ -9,7 +9,7 @@ export default class GrantedGraph extends React.Component {
       this.state = {
       
         series: [{
-          name: 'Net Profit',
+          name: 'Granted Visas',
           data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
         }],
         options: {

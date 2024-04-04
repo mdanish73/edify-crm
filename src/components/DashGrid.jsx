@@ -42,8 +42,8 @@ const DashGrid = () => {
         </div>
       </div>
 
-      <div className='p-3 row-span-7 rounded-lg bg-white h-full'>
-        <EmployeeOfMonth />
+      <div className='bg-white row-span-7 overflow-hidden'>
+        <Slider />
       </div>
 
       <div className='p-5 rounded-lg bg-white h-full'>
@@ -108,8 +108,8 @@ const DashGrid = () => {
         <LineChart />
       </div>
       
-      <div className='rounded-lg bg-white h-80'>
-        <Slider />
+      <div className='p-3 rounded-lg bg-white'>
+        <EmployeeOfMonth />
       </div>
     </div>
   )

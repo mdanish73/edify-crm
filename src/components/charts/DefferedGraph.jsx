@@ -9,7 +9,7 @@ export default class DefferedGraph extends React.Component {
       this.state = {
       
         series: [{
-          name: 'Net Profit',
+          name: 'Deffered Students',
           data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
         }],
         options: {

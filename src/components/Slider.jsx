@@ -1,29 +1,53 @@
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import { FluentChevronLeft24Filled } from './svg/FluentChevronLeft24Filled';
-import { FluentChevronRight24Filled } from './svg/FluentChevronRight24Filled';
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 
 export default () => {
-  const swiper = useSwiper();
+  const slides = [
+    { image: '/img/cover_1.jpg', category: 'Featured Event', title: 'Exploring the hidden Gems of Australia', description: 'lorem ipsum dolor si amet lorem ipsum dolor si amet lorem ipsum dolor si amet' },
+    { image: '/img/cover_2.jpg', category: 'Featured Event', title: '10 Essential Tips for Healthy Living', description: 'lorem ipsum dolor si amet lorem ipsum dolor si amet lorem ipsum dolor si amet' }
+  ];
+
   return (
     <Swiper
-      spaceBetween={50}
       slidesPerView={1}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-      draggable={true}
-      pagination={{ clickable: true }}
+      spaceBetween={30}
+      loop={true}
+      autoplay={{
+        delay: 2000,
+        disableOnInteraction: false
+      }}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      modules={[Pagination, Navigation, Autoplay]}
+      className="mySwiper w-full h-full rounded-lg overflow-hidden"
     >
-      <SwiperSlide>Slide 1</SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <div className='flex gap-3 relative mr-2 justify-end'>
-        <div className='h-5 w-5 rounded-full bg-gray-900 opacity-10 flex items-center justify-center' onClick={() => swiper.allowSlidePrev()}>
-          <FluentChevronLeft24Filled />
-        </div>
-        <div className='h-5 w-5 rounded-full bg-gray-900 opacity-10 flex items-center justify-center' onClick={() => swiper.allowSlideNext()}>
-          <FluentChevronRight24Filled />
-        </div>
-      </div>
+      {slides.map((slide, index) => (
+        <SwiperSlide key={index} className="w-full h-full relative">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage: `url(${slide.image})`,
+              backgroundSize: 'cover',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+            }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+            
+            <div className="absolute bottom-0 p-7 text-white">
+              <span className='text-[#73ACEA] text-sm font-semibold' >{slide.category}</span>
+              <h2 className="text-xl font-bold line-clamp-1 my-2">{slide.title}</h2>
+              <p className='line-clamp-1 text-sm'>{slide.description}</p>
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };
